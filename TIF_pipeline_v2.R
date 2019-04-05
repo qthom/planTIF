@@ -31,34 +31,5 @@ source("findMatchedControl_v2.R")
 
 source("Process_TIFs.R")
 
-
 #loading dplyr now because of a function conflict with biomart (select())
 library(dplyr)
-
-#Calculates controls sets of genes
-
-source("subset_equaldistribution_v4.R")
-
-
-#histscatterplots for TUs - the plotting takes a while for that script
-
-source("histscatter_all.R")
-source("histscatter_FACT.R")
-source("histscatter_small.R")
-
-
-#Metagenes plots
-
-source("Plot_metagenes_sppRNA.R")
-
-#histograms
-
-source("histogram.R")
-
-#metagenePlot FP vs Mock
-
-source("Overlapped_mock_FP.R")
-
-#VennDiagram
-
-source("VennDiagram")
