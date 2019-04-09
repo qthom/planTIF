@@ -9,3 +9,6 @@ The script "TIF-Seq_pipeline_v2.R" will load the required R packages and downloa
 if scripts are not found here they can be found at https://github.com/Maxim-Ivanov/Nielsen_et_al_2018. from Nielsen et al, 2019
 
 Each script refer to other scripts containing important function or algorythms 
+
+
+Bed files representing each read pairs are present here. They have been filtered for polyA misprimming and combined with TSS-Seq clusters.
