@@ -2,7 +2,7 @@
 
 #create data frame with gene's pNET-Seq expression
 
-pNET <- import('bedgraph file of coverage for the unphosphorilated pNET seq data from zhu et al', format = 'bedgraph')
+pNET <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/f/s03_s04_unph_fw_rev_norm1M.bedgraph.gz', format = 'bedgraph')
 
 pnet <- dropSeqlevels(pNET,c("Pt","Mt"),pruning.mode ="coarse")
 
@@ -72,10 +72,7 @@ small_spt16 <- gr
 
 #select for "long" genes > 1000 bp for finding the control genes set
 
-genes <- genes(txdb)
-genes$match <- match(genes$gene_id, coding_genes_nO$names,nomatch=0)
-genes <- genes[genes$match > 0,]
-genes <- genes[width(genes) > 1000]
+genes <- coding_genes[width(coding_genes) > 1000]
 
 #finds genes with sppRNA for each data set
 #22C
@@ -117,12 +114,13 @@ df$small_ssrp1[g] <- 1
 
 all_hen2 <- df$geneID[df$small_hen2 == 1 | df$small_hen2cold == 1 & df$small_wt == 0 & df$small_wtcold == 0 & df$small_ssrp1 == 0 & df$small_spt16 == 0]
 all_wt <- df$geneID[df$small_hen2 == 0 & df$small_hen2cold == 0 & df$small_wt == 1 | df$small_wtcold == 1]
+all_warm <- df$geneID[df$small_hen2 == 1 | df$small_wt == 1 | df$small_ssrp1 == 1 | df$small_spt16 == 1]
 all <- df$geneID[df$small_hen2 == 1 | df$small_hen2cold == 1 | df$small_wt == 1 | df$small_wtcold == 1 | df$small_ssrp1 == 1 | df$small_spt16 == 1]
 no_small <- df$geneID[df$small_hen2 == 0 & df$small_wt == 0 & df$small_hen2cold == 0 & df$small_wtcold == 0 & df$small_ssrp1 == 0 & df$small_spt16 == 0]
 
 #Provide Names to geneID of sppRNA genes and without sppRNAs
 
-tair_ann <- import.gff3("Arabidopsis_thaliana.TAIR10.26.gff3")
+tair_ann <- import.gff3("/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/sequencing_files/TAIR10/Arabidopsis_thaliana.TAIR10.26.gff3")
 mapping <- data.frame("geneID" = sub("gene:", "", tair_ann$ID), "name"=tair_ann$external_name)
 tmp <- left_join(x=tibble(geneID=df$geneID), y=mapping, by="geneID", na_matches = "never")
 tmp <- as.data.frame(tmp)
@@ -132,7 +130,7 @@ df$type <- "0"
 df$type[all_hen2] <- "hen2"
 df$type[no_small] <- "None"
 
-MyData <- data.frame('geneID' = Norm$names, 'V3' = Norm$normpNET)
+MyData <- data.frame('geneID' = Norm$gene_id, 'V3' = Norm$normpNET)
 df2 <- merge(df, MyData, by='geneID', all=T)
 
 
@@ -182,3 +180,23 @@ genes_nosppRNA <- genes[genes$matchnospp > 0,]
 genes_nosppRNA_PAS <- resize(genes_nosppRNA, width = 1, fix = "end")
 
 grl_pnetend <- list("B" = genes_sppRNA_PAS, "Control of B" = genes_nosppRNA_PAS)
+
+
+
+#filename = "hen2_sppRNA.csv"
+#rite.table(as.data.frame(small_hen2), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+
+#filename = "wt_sppRNA.csv"
+#write.table(as.data.frame(small_wt), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+
+#filename = "hen2cold_sppRNA.csv"
+#write.table(as.data.frame(small_hen2cold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+
+#filename = "spt16_sppRNA.csv"
+#write.table(as.data.frame(small_spt16), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+
+#filename = "ssrp1_sppRNA.csv"
+#write.table(as.data.frame(small_ssrp1), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+
+#filename = "wtcold_sppRNA.csv"
+#write.table(as.data.frame(small_wtcold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)

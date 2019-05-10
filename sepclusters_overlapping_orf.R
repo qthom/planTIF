@@ -50,23 +50,23 @@ over_orf_all$overlap_TSS <- countOverlaps(over_orf_allTSS,exTSS,type=c("any"),ig
 over_orf_all$overlap_3orf <- countOverlaps(over_orf_all,To,type=c("any"),ignore.strand=FALSE)
 over_orf_all$overlap_5orf <- countOverlaps(over_orf_all,So,type=c("any"),ignore.strand=FALSE)
 
-
+#exact overlapping
 o1 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 1 &  over_orf_all$overlap_TTS == 1 ]
-
+#Terminating within 3'UTR before extended PAS and at TSS
 o2 <- over_orf_all[over_orf_all$overlap_3 == 0 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 1 &  over_orf_all$overlap_TTS == 0 ]
-
+#extended 3 UTR - over the PAS - at TSS
 o3 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 1 &  over_orf_all$overlap_TTS == 0 ]
-
+#within both UTRs strictly
 o4 <- over_orf_all[over_orf_all$overlap_3 == 0 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 0 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 0 ]
-
+#over both TSS and PAS
 o5 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 0 ]
-
+#Within 5' UTR strictly and on 3'UTR
 o6 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 0 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 1 ]
-
+#Over the 5'UTR and at the 3' UTR
 o7 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 1 ]
-
+#within 3' UTR and at TSS
 o8 <- over_orf_all[over_orf_all$overlap_3 == 0 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 1 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 0 ]
-
+#over PAS and within 5'UTR
 o9 <- over_orf_all[over_orf_all$overlap_3 == 1 & over_orf_all$overlap_3orf == 1 & over_orf_all$overlap_5 == 0 & over_orf_all$overlap_5orf == 1 &  over_orf_all$overlap_TSS == 0 &  over_orf_all$overlap_TTS == 0 ]
 
 

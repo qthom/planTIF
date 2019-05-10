@@ -3,7 +3,7 @@
 
 coding_genes_nO$genes_number <- as.character(seq_len(nrow(mcols(coding_genes_nO))))
 
-map <- data.frame("geneID" = coding_genes_nO$names, "gene_number" = coding_genes_nO$genes_number)
+map <- data.frame("geneID" = coding_genes_nO$gene_id, "gene_number" = coding_genes_nO$genes_number)
 
 ov <- as.data.frame(findOverlaps(coding_genes_nO,gr, ignore.strand = FALSE))
 

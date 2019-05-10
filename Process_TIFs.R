@@ -1,11 +1,11 @@
 #load the clusters
 
-gr_wt <- import('COL0.bed')
-gr_hen2 <- import('HEN2-2.bed')
-gr_hen2cold <- import('HEN2-2cold.bed')
-gr_wtcold <- import('COL0cold.bed')
-gr_spt16 <- import('SPT16.bed')
-gr_ssrp1 <- import('SSRP1.bed')
+gr_wt <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/COL0.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
+gr_hen2 <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/HEN2-2.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
+gr_hen2cold <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/HEN2-2cold.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
+gr_wtcold <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/COL0cold.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
+gr_spt16 <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/SPT16.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
+gr_ssrp1 <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/commonTSS/SSRP1.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.commonTSS.bed')
 
 #import the ENSEMBL database
 
@@ -14,15 +14,13 @@ listg <- select(mart,keys=c("protein_coding"),columns=c("chromosome_name","start
 lista <- select(mart,keys=c("protein_coding","antisense_RNA","ncRNA","lncRNA","snoRNA"),c("chromosome_name","start_position","end_position","strand","gene_biotype","ensembl_gene_id"), keytype="biotype")
 lncRNA <- select(mart,keys=c("antisense_RNA","ncRNA","snRNA","rRNA","tRNA","lncRNA","snoRNA","miRNA"),c("chromosome_name","start_position","end_position","strand","gene_biotype","ensembl_gene_id"), keytype="biotype")
 
-#Find ENSEMBL coding genes
-
-coding_genes <- GRanges(names = listg$ensembl_gene_id,seqnames = listg$chromosome_name, ranges = IRanges(listg$start_position, listg$end_position), strand = listg$strand)
-names(coding_genes) <- listg$ensembl_gene_id
-coding_genes$names <- listg$ensembl_gene_id
-coding_genes$biotype <- listg$gene_biotype
+#Find TAIR10 coding genes
+genes <- genes(txdb)
+keys <- genes$gene_id
+genes$txtype <- select(txdb,keys=keys,keytype="GENEID",columns="TXTYPE")$TXTYPE
+coding_genes <- genes[genes$txtype == "protein_coding",]
 
 #all genes including ncRNAs
-
 
 all_genes <- GRanges(names = lista$ensembl_gene_id,seqnames = lista$chromosome_name, ranges = IRanges(lista$start_position, lista$end_position), strand = lista$strand)
 names(all_genes) <- lista$ensembl_gene_id
@@ -84,3 +82,17 @@ exTSS <- extend(TSS, upstream=10,downstream=10)
 exTTS <- extend(TTS, upstream=10,downstream=10)
 
 
+gr_wt_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/COL0.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+gr_hen2_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/HEN2-2.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+gr_hen2cold_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/HEN2-2cold.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+gr_wtcold_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/COL0cold.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+gr_spt16_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/SPT16.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+gr_ssrp1_PN <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/polyN/SSRP1.Aligned.sortedByCoord.out.dedup.uniq.merged.polyN.bed')
+
+
+gr_wt_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/COL0.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
+gr_hen2_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/HEN2-2.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
+gr_hen2cold_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/HEN2-2cold.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
+gr_wtcold_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/COL0cold.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
+gr_spt16_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/SPT16.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
+gr_ssrp1_r <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/Quentin/TIF-Seq/Data_processing/Quentin_secondBAM/EndTodEnd_align_polyXfiltered/clusters/raw/SSRP1.Aligned.sortedByCoord.out.dedup.uniq.merged.bed')
