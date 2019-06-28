@@ -1,4 +1,4 @@
-
+#this script return a list of vectors with equally distributed values compared to another list of vectors and values
 findMatchedControl_v2 <- function(treat, ctrl, log=TRUE, pseudocount=1) {
   if (isTRUE(log)) {
     treat <- log2(treat + pseudocount)
