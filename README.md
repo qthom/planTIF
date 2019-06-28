@@ -11,4 +11,4 @@ The script "TIF-Seq_pipeline_v2.R" will load the required R packages and downloa
 
 If any scripts are not provided here they can be found unchanged at https://github.com/Maxim-Ivanov/Nielsen_et_al_2018. from Nielsen et al, 2019
 
-Each script refer to other scripts containing important functions for the analysis.
+It is importan to know were every scripts is called from since Each script refer to other scripts containing important functions for the analysis. If the functions  contained in those scripts are not called properly the analysis won't work.
