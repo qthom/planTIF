@@ -1,3 +1,7 @@
+list.of.packages <- c("BiocParallel","CAGEfightR","itsadug","LSD","VennDiagram","tibble","SummarizedExperiment","scales","GenomicRanges","ggplot2","TxDb.Athaliana.BioMart.plantsmart28","rtracklayer","biomaRt","BSgenome.Athaliana.TAIR.TAIR9","reshape")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
 library(GenomicRanges)
 library(TxDb.Athaliana.BioMart.plantsmart28)
 library(rtracklayer)
@@ -13,7 +17,7 @@ library(LSD)
 library(itsadug)
 #library(CAGEfightR)						
 #library(BiocParallel)
-setwd("/home/bcm215/Desktop/Quentin/scripts/TIF-Seq_2019")
+
 
 txdb <- TxDb.Athaliana.BioMart.plantsmart28
 
