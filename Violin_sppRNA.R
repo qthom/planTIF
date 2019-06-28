@@ -1,3 +1,4 @@
+#this script creates a violin plot for the size distribution of transcription units
 
 wt <- gr_wt[width(gr_wt) < 6000]
 hen2<- gr_hen2[width(gr_hen2) < 6000]
