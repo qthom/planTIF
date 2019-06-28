@@ -2,6 +2,8 @@
 
 #create data frame with gene's pNET-Seq expression
 
+#at the end of the script the files of sppRNA per samples are created
+
 pNET <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/f/s03_s04_unph_fw_rev_norm1M.bedgraph.gz', format = 'bedgraph')
 
 pnet <- dropSeqlevels(pNET,c("Pt","Mt"),pruning.mode ="coarse")
@@ -183,20 +185,20 @@ grl_pnetend <- list("B" = genes_sppRNA_PAS, "Control of B" = genes_nosppRNA_PAS)
 
 
 
-#filename = "hen2_sppRNA.csv"
-#rite.table(as.data.frame(small_hen2), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "hen2_sppRNA.csv"
+rite.table(as.data.frame(small_hen2), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
 
-#filename = "wt_sppRNA.csv"
-#write.table(as.data.frame(small_wt), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "wt_sppRNA.csv"
+write.table(as.data.frame(small_wt), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
 
-#filename = "hen2cold_sppRNA.csv"
-#write.table(as.data.frame(small_hen2cold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "hen2cold_sppRNA.csv"
+write.table(as.data.frame(small_hen2cold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
 
-#filename = "spt16_sppRNA.csv"
-#write.table(as.data.frame(small_spt16), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "spt16_sppRNA.csv"
+write.table(as.data.frame(small_spt16), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
 
-#filename = "ssrp1_sppRNA.csv"
-#write.table(as.data.frame(small_ssrp1), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "ssrp1_sppRNA.csv"
+write.table(as.data.frame(small_ssrp1), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
 
-#filename = "wtcold_sppRNA.csv"
-#write.table(as.data.frame(small_wtcold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
+filename = "wtcold_sppRNA.csv"
+write.table(as.data.frame(small_wtcold), file=filename, quote=F, sep="\t", row.names=F, col.names=T)
