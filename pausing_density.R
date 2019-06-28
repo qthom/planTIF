@@ -1,4 +1,4 @@
-
+#This script calculates the pausing ratio used to plot pausing ratio and sppRNA genes
 
 coding_genes_n0big <- coding_genes_nO[width(coding_genes_nO) > 1000, ]
 
