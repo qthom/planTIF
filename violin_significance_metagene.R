@@ -1,3 +1,6 @@
+#in this script the NET-Seq signal for sppRNA genes promoters and their control genes without sppRNA was plotted and the significance calculated between the two population
+#with the wilcoxon test
+
 pNET <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/f/s03_s04_unph_fw_rev_norm1M.bedgraph.gz', format = 'bedgraph')
 
 pnet <- dropSeqlevels(pNET,c("Pt","Mt"),pruning.mode ="coarse")
