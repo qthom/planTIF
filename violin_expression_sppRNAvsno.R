@@ -1,3 +1,5 @@
+#Determining the expression distribution of sppRNA genes compared to expressed genes in NET-Seq
+
 Norm$match <- match(Norm$gene_id,all, nomatch = 0)
 
 pnet_sppRNA <- Norm[Norm$match > 0,]
