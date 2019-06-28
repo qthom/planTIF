@@ -2,7 +2,7 @@
 
 gr_wt <- import('COL0.bed')
 gr_hen2 <- import('HEN2-2.bed')
-gr_hen2cold <- import('/HEN2-2cold.bed')
+gr_hen2cold <- import('HEN2-2cold.bed')
 gr_wtcold <- import('COL0cold.bed')
 gr_spt16 <- import('SPT16.bed')
 gr_ssrp1 <- import('SSRP1.bed')
