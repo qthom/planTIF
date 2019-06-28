@@ -1,3 +1,8 @@
+
+#In this script all functions are called for producing the plots and analysis of the paper
+
+
+
 list.of.packages <- c("BiocParallel","CAGEfightR","itsadug","LSD","VennDiagram","tibble","SummarizedExperiment","scales","GenomicRanges","ggplot2","TxDb.Athaliana.BioMart.plantsmart28","rtracklayer","biomaRt","BSgenome.Athaliana.TAIR.TAIR9","reshape")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
