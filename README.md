@@ -7,7 +7,7 @@ The bed files produced from this clustering were used for the downstream analysi
 Alternatively:
 I produced bed files of all reads (without clustering) found after filtering and are available here in the Github repository.They have been filtered for polyA misprimming and filtered if no match with TSS-Seq clusters was found.
 
-The script "TIF-Seq_pipeline_v2.R" will load the required R packages and download the genomic information for arabidopsis for the rest of the scripts
+The script "TIF-Seq_pipeline_v2.R" will load the required R packages and download the genomic information for arabidopsis for the rest of the analysis. It will also produce the plots used in the publication.
 
 If any scripts are not provided here they can be found unchanged at https://github.com/Maxim-Ivanov/Nielsen_et_al_2018. from Nielsen et al, 2019
 
