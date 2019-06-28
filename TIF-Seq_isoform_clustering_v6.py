@@ -2,7 +2,8 @@
 #Modified by Quentin Thomas
 #qt@plen.ku.dk
 #latest update = 06/11/2017
-
+#this script takes as input the bam files after mapping, UMI deduplicated and multialigned reads removed and duplicates merged
+#run the script as follow on your command line: python3 <bam files> 
 
 chroms = ['1', '2', '3', '4', '5'] # have to match chromosome names in BAM file
 
