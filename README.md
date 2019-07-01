@@ -11,4 +11,4 @@ The script "TIF-Seq_pipeline_v2.R" will load the required R packages and downloa
 
 If any scripts are not provided here they can be found unchanged at https://github.com/Maxim-Ivanov/Nielsen_et_al_2018. from Nielsen et al, 2019
 
-Before rungin the TIF-Seqp_pipeline_v2.R in R, it is important to read the scripts and to know where every scripts and external files are called from, since each script refers to other scripts containing important functions for the analysis. If the functions  contained in those scripts are not called properly the analysis won't work.
+Before runing the "TIF-Seqp_pipeline_v2.R" in R, it is important to read the scripts and to know where every scripts and external files are called from, since each script refers to other scripts containing important functions for the analysis. If the functions  contained in those scripts are not called properly the analysis won't work.
