@@ -1,3 +1,7 @@
+
+
+#This script was used to extract the relevant enrichment information from motif density plots
+
 gaga <- as.data.frame(GAGA)
 gaga <- t(gaga[-1])
 
@@ -5,7 +9,7 @@ write.table(gaga, file="gaga.csv", quote=F, sep="\t", row.names=T, col.names=T)
 
 #from here the unrelevant columns were removed manually from the file
 
-data <- read.csv("/home/bcm215/Desktop/gaga.csv",sep=",",header=TRUE) 
+data <- read.csv("gaga.csv",sep=",",header=TRUE) 
 
 pdf("gaga-mean-motif.pdf")
 ggplot(data, aes(x=genes, y=mean, fill=genes)) + 
@@ -23,7 +27,7 @@ write.table(tcp1, file="tcp1.csv", quote=F, sep="\t", row.names=T, col.names=T)
 
 #from here the unrelevant columns were removed manually from the file
 
-data <- read.csv("/home/bcm215/Desktop/tcp1.csv",sep=",",header=TRUE) 
+data <- read.csv("tcp1.csv",sep=",",header=TRUE) 
 pdf("tcp1-mean-motif.pdf")
 
 
