@@ -2,7 +2,7 @@
 
 #create data frame with gene's pNET-Seq expression
 
-pNET <- import('/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Maxim/GRO-Seq and pNET-Seq/Zhu 2018 (PMID 30374093) - pNET-Seq/Remapped/pNET-Seq/Remapped/Norm1M/s03_s04_unph_fw_rev_norm1M.bedgraph.gz',format = 'bedgraph')
+pNET <- import('UNPHOSPHORYLATED pNET-SEQ FROM Zhu 2018 (PMID 30374093)',format = 'bedgraph')
 
 pnet <- dropSeqlevels(pNET,c("Pt","Mt"),pruning.mode ="coarse")
 
