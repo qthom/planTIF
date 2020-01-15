@@ -1,3 +1,6 @@
+
+#This script compare the pausing density and the number of sppRNAs
+
 library(groupdata2)
 
 coding_genes_n0big <- coding_genes_nO[width(coding_genes_nO) > 1000, ]
