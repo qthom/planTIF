@@ -19,7 +19,7 @@ NormTSS <- getOverlappingScores_v2(extended_TSS,data)
 Norm$TSS_cov <- NormTSS$pNET
 Norm$pausing_density <- Norm$TSS_cov/Norm$normpNET
 
-df.3 <- data.frame("geneID" = Norm$gene_id ,"genebody"=Norm$pNET , "PD" = Norm$pausing_density,"size" = Norm$widthg)
+df.3 <- data.frame("geneID" = Norm$gene_id ,"genebody"=Norm$pNET , "PD" = Norm$pausing_density,"size" = Norm$width)
 df.3 <- df.3[order(-df.3$genebody),]
 nrow(df.3)
 nb <- nrow(df.3)
