@@ -13,7 +13,7 @@ library(LSD)
 library(itsadug)
 library(CAGEfightR)						
 library(BiocParallel)
-setwd("/home/bcm215/Desktop/Quentin/scripts/TIF-Seq_2019")
+setwd("SCRIPT LOCATION")
 
 txdb <- TxDb.Athaliana.BioMart.plantsmart28
 
@@ -43,13 +43,23 @@ library(dplyr)
 
 source("subset_equaldistribution_v4.R")
 
+#Takes sppRNA genes and plot it against the pNET-Seq data (one need to have pNET-Seq bedgraph tracks)
+
+source("pausing_density.R")
+
+#Plot the TPM of PAS at sppRNA genes and WT genes with appropriate controls
+
+source("plot_termination_factors_sppRNA.R")
+
+#Plot the motifs identified with DREME and RSAT
+
+source("promoter_study_2.R")
 
 #histscatterplots for TUs - the plotting takes a while for that script
 
 source("histscatter_all.R")
 source("histscatter_FACT.R")
 source("histscatter_small.R")
-
 
 #Metagenes plots
 
