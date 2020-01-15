@@ -1,13 +1,13 @@
 
 
-source("/home/bcm215/Desktop/Quentin/scripts/Nielsen_et_al_2018-master/001-batchReadTrackData.R")
-source("/home/bcm215/Desktop/Quentin/scripts/Nielsen_et_al_2018-master/003-metageneMatrix.R")
-source("/home/bcm215/Desktop/Quentin/scripts/Nielsen_et_al_2018-master/randomPositions.R")
-source("/home/bcm215/Desktop/Quentin/scripts/TIF-Seq_2019/005-drawMetagenePlot.R")
-source("/home/bcm215/Desktop/Quentin/scripts/Nielsen_et_al_2018-master/extractSummits.R")
-source("/home/bcm215/Desktop/Quentin/scripts/Nielsen_et_al_2018-master/metagenePipeline.R")
+source("001-batchReadTrackData.R")
+source("003-metageneMatrix.R")
+source("randomPositions.R")
+source("005-drawMetagenePlot.R")
+source("extractSummits.R")
+source("metagenePipeline.R")
 
-pNET_dir <- "/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/g/"
+pNET_dir <- "DATA from Zhu 2018 (PMID 30374093)"
 pNET_filenames <- list.files(pNET_dir, pattern=".bedgraph.gz$")
 pNET_data <- suppressWarnings(batchReadTrackData(pNET_filenames, pNET_dir, format="bedGraph", seqinfo=seqinfo(Athaliana)))
 
@@ -34,8 +34,8 @@ dev.off()
 
 library(ggsignif)
 
-pNET_FP <- import("/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/g/s11_s12_unph_FP_fw_rev_norm1M.bedgraph.gz")
-pNET_Mock <- import("/home/bcm215/groupdirs/SCIENCE-PLEN-Marquardt_lab/The Holy Grail/Arabidopsis/Zhu 2018 (PMID 30374093) - pNET-Seq/pNET-Seq/Norm1M/g/s09_s10_unph_mock_fw_rev_norm1M.bedgraph.gz")
+pNET_FP <- import("FP TREATED DATA FROM Zhu 2018 (PMID 30374093)")
+pNET_Mock <- import("MOCK TREATED DATA FROM Zhu 2018 (PMID 30374093)")
 
 
 genes <- genes(txdb)
